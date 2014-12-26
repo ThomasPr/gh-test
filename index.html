@@ -6,26 +6,32 @@
   <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
   <script src="https://jquery-csv.googlecode.com/files/jquery.csv-0.71.min.js"></script>
   <script>
-     // wait till the DOM is loaded
-     $(function() {
-       $.get("test.csv", function(csvString) {
-        // transform the CSV string into a 2-dimensional array
-        var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-        // this new DataTable object holds all the data
-        
-        var data = new google.visualization.DataTable();
-                data.addColumn('date', 'Date');
-                data.addColumn('number', 'Time');
-                data.addRows(arrayData);
-        
-        var data = new google.visualization.arrayToDataTable(arrayData);
-        // this view can select a subset of the data at a time
-        var view = new google.visualization.DataView(data);
-        var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      });
-    });
-  </script>
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+         // grab the CSV
+         $.get("test.csv", function(csvString) {
+            // transform the CSV string into a 2-dimensional array
+            var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
+          alert(arrayData);
+            // this new DataTable object holds all the data
+            var data = new google.visualization.arrayToDataTable(arrayData);
+
+            // this view can select a subset of the data at a time
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0,1]);
+
+           // set chart options
+           var options = {
+          title: "A Chart from a CSV!",
+          legend: 'none'
+           };
+
+          var chart = new google.visualization.LineChart(document.getElementById('gauge'));
+          chart.draw(data, options);
+  });
+        }  </script>
 </head>
 <body>
    <div id="chart_div">
