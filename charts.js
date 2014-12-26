@@ -7,10 +7,8 @@
           // transform the CSV string into a 2-dimensional array
           var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
           
-          alert( $.toJSON(arrayData) );
-          
           var selected = arrayData.slice(-1,-8)
-          alert( $.toJSON(selected) );
+          alert( selected );
         //alert(arrayData);
           // this new DataTable object holds all the data
           var data = new google.visualization.arrayToDataTable(arrayData);
