@@ -14,7 +14,7 @@
          $.get("test.csv", function(csvString) {
             // transform the CSV string into a 2-dimensional array
             var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
-          alert(arrayData);
+          //alert(arrayData);
             // this new DataTable object holds all the data
             var data = new google.visualization.arrayToDataTable(arrayData);
 
