@@ -8,7 +8,7 @@
           var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
           
           console.log(arrayData);
-          var selected = arrayData.slice(-8,-1);
+          var selected = arrayData.slice(-7);
           console.log( selected );
         //alert(arrayData);
           // this new DataTable object holds all the data
