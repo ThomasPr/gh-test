@@ -12,7 +12,7 @@
           console.log( selected );
         //alert(arrayData);
           // this new DataTable object holds all the data
-          var data = new google.visualization.arrayToDataTable(arrayData);
+          var data = new google.visualization.arrayToDataTable(selected);
 
           // this view can select a subset of the data at a time
           var view = new google.visualization.DataView(data);
