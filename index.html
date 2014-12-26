@@ -11,7 +11,7 @@
 
       function drawChart() {
          // grab the CSV
-         $.get("https://raw.githubusercontent.com/ThomasPr/gh-test/master/test.csv", function(csvString) {
+         $.get("test.csv", function(csvString) {
             // transform the CSV string into a 2-dimensional array
             var arrayData = $.csv.toArrays(csvString, {onParseValue: $.csv.hooks.castToScalar});
           //alert(arrayData);
